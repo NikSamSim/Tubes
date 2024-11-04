@@ -40,20 +40,20 @@ while(True):
 		pilihan = input("Mau masukin apa: ")
 		match pilihan:
 			case 'swing':
-				pass
+				swing()
 			case 'fan':
-				pass
+				fan()
 			case 'mode':
-				pass
+				mode()
 			case "turbo":
-				pass
+				turbo()
 			case 'quiet':
-				pass
+				pass()
 			case 'sleep':
-				pass
+				sleep()
 			case 'timer':
-				pass
+				timer()
 			case 'atur suhu':
-				pass
+				atur_suhu()
 			case "auto":
-				pass
+				auto
