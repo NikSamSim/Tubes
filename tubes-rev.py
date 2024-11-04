@@ -48,7 +48,7 @@ while(True):
 			case "turbo":
 				turbo()
 			case 'quiet':
-				pass()
+				quiet()
 			case 'sleep':
 				sleep()
 			case 'timer':
