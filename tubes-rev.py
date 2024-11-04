@@ -56,4 +56,4 @@ while(True):
 			case 'atur suhu':
 				atur_suhu()
 			case "auto":
-				auto
+				auto()
