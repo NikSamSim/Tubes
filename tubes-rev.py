@@ -32,6 +32,8 @@ def auto:
 power = 'off'
 pilihan = ''
 
+print("hello world!")
+
 while(True):
 	power = input("Masukkan power: ")
 	if(power == 'on'):
