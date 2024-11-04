@@ -1,31 +1,31 @@
 # Bikin AC
 
 #function
-def swing:
+def swing():
 	pass
 
-def fan:
+def fan():
 	pass
 
-def mode:
+def mode():
 	pass
 
-def turbo:
+def turbo():
 	pass
 
-def quiet:
+def quiet():
 	pass
 
-def sleep:
+def sleep():
 	pass
 
-def timer:
+def timer():
 	pass
 
-def atur_suhu:
+def atur_suhu():
 	pass
 
-def auto:
+def auto():
 	pass
 
 #Main program
@@ -40,20 +40,20 @@ while(True):
 		pilihan = input("Mau masukin apa: ")
 		match pilihan:
 			case 'swing':
-
+				pass
 			case 'fan':
-
+				pass
 			case 'mode':
-
+				pass
 			case "turbo":
-
+				pass
 			case 'quiet':
-
+				pass
 			case 'sleep':
-
+				pass
 			case 'timer':
-
+				pass
 			case 'atur suhu':
-
+				pass
 			case "auto":
-				
+				pass
