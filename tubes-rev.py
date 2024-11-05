@@ -57,3 +57,9 @@ while(True):
 				atur_suhu()
 			case "auto":
 				auto()
+			case _:
+				print("Wrong input!")
+	else:
+		print("Power off.")
+		break
+     
