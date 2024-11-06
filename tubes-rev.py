@@ -64,6 +64,7 @@ state.grid(row=0, column=0)
 state.grid_propagate(False)
 
 #TODO make them show actual icons
+# Power
 power_indicator = tk.Frame(state,height=30, width=30, bg="pink")
 power_indicator.grid(row=0, column=0)
 power_indicator.grid_propagate(False)
@@ -72,7 +73,7 @@ power_icon = PIL.ImageTk.PhotoImage(PIL.Image.open("Power.png").resize((50,50)))
 power_icon_display = tk.ttk.Label(power_indicator, image = power_icon, background="yellow")
 power_icon_display.pack(side = "bottom", fill = "both", expand = "yes")
 
-
+# Swing
 swing_indicator = tk.Frame(state,height=30, width=30, bg="pink")
 swing_indicator.grid(row=0, column=1)
 swing_indicator.grid_propagate(False)
