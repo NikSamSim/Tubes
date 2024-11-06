@@ -55,19 +55,49 @@ frm_top = tk.Frame(root)
 frm_top.grid()
 
 
-# Displaying temperature and such
-frm1 = tk.Frame(frm_top, height=500, width=500, bg="red")
-frm1.grid(row=0, column=0)
+# Display
+#   Displaying the Ac's state
+state = tk.Frame(frm_top, height=300, width=300, bg="red")
+state.grid(row=0, column=0)
+state.grid_propagate(False)
 
-temperature_display = tk.Frame(frm_top, height=500, width=500, bg = "green")
+#TODO make them show actual icons
+power_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+power_indicator.grid(row=0, column=0)
+power_indicator.grid_propagate(False)
+swing_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+swing_indicator.grid(row=0, column=1)
+swing_indicator.grid_propagate(False)
+fan_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+fan_indicator.grid(row=1, column=0)
+fan_indicator.grid_propagate(False)
+mode_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+mode_indicator.grid(row=1, column=1)
+mode_indicator.grid_propagate(False)
+turbo_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+turbo_indicator.grid(row=2, column=0)
+turbo_indicator.grid_propagate(False)
+quiet_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+quiet_indicator.grid(row=2, column=1)
+quiet_indicator.grid_propagate(False)
+sleep_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+sleep_indicator.grid(row=3, column=0)
+sleep_indicator.grid_propagate(False)
+timer_indicator = tk.Frame(state,height=30, width=30, bg="pink")
+timer_indicator.grid(row=3, column=1)
+timer_indicator.grid_propagate(False)
+
+#   Displaying the number of the temp
+
+temperature_display = tk.Frame(frm_top, height=300 , width=300, bg = "green")
 temperature_display.grid(row=0, column=1)
-
+temperature_display.grid_propagate(False)
 
 temperature_text = tk.StringVar()
 temperature_text.set(f"{temperature}\N{DEGREE SIGN}")
 
 temperature_number = tk.ttk.Label(temperature_display, text=temperature_text.get())
-temperature_number.grid(row=0,column=0)
+temperature_number.place(anchor="center", relx=0.5, rely=0.5)
 temperature_number.configure(font=("Calibri", 100))
 
 #buttons
