@@ -2,6 +2,8 @@
 
 import tkinter as tk
 import tkinter.messagebox
+import PIL.ImageTk
+import PIL.Image
 import tkinter.ttk
 import sys
 
@@ -65,9 +67,20 @@ state.grid_propagate(False)
 power_indicator = tk.Frame(state,height=30, width=30, bg="pink")
 power_indicator.grid(row=0, column=0)
 power_indicator.grid_propagate(False)
+
+power_icon = PIL.ImageTk.PhotoImage(PIL.Image.open("Power.png").resize((50,50)))
+power_icon_display = tk.ttk.Label(power_indicator, image = power_icon, background="yellow")
+power_icon_display.pack(side = "bottom", fill = "both", expand = "yes")
+
+
 swing_indicator = tk.Frame(state,height=30, width=30, bg="pink")
 swing_indicator.grid(row=0, column=1)
 swing_indicator.grid_propagate(False)
+
+swing_icon = PIL.ImageTk.PhotoImage(PIL.Image.open("Swing.png").resize((50,50)))
+swing_icon_display = tk.ttk.Label(swing_indicator, image = swing_icon, background="yellow")
+swing_icon_display.pack(side = "bottom", fill = "both", expand = "yes")
+
 fan_indicator = tk.Frame(state,height=30, width=30, bg="pink")
 fan_indicator.grid(row=1, column=0)
 fan_indicator.grid_propagate(False)
