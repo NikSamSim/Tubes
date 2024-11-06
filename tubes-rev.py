@@ -32,11 +32,13 @@ def set_temperature_up():
     global temperature
     temperature += 1
     temperature_text.set(f"{temperature}\N{DEGREE SIGN}")
+    temperature_number.configure(text=temperature_text.get())
     
 def set_temperature_down():
     global temperature
     temperature -= 1
     temperature_text.set(f"{temperature}\N{DEGREE SIGN}")
+    temperature_number.configure(text=temperature_text.get())
 
 def auto():
 	pass
@@ -54,7 +56,6 @@ frm_top.grid()
 
 
 # Displaying temperature and such
-#TODO make the temperature display to automatically update
 frm1 = tk.Frame(frm_top, height=500, width=500, bg="red")
 frm1.grid(row=0, column=0)
 
