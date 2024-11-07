@@ -58,8 +58,25 @@ def swing():
         print("Wrong input.")
         swing()
 
+#TODO finish defining this function
 def fan():
-    global power_status
+    global fan_status
+    options = ["Low", "Medium", "High"]
+    print(f"Current fan status  : {fan_status}")
+    print(f"What you can choose : Low Medium High")
+    print(f"Current temperature: {temperature_status}")
+    temp_fan_status = input("Enter your changes: ")
+    try:
+        temp_fan_status = int(temp_fan_status)
+    except ValueError:
+        if(temp_fan_status == "up"):
+            temp_fan_status = temperature_status+1
+        elif(temp_fan_status == "down"):
+            temp_fan_status = temperature_status-1
+        else:
+            print("Wrong input.")
+            set_temperature()
+            return False
 
 def mode():
 	global power_status
