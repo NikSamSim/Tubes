@@ -6,16 +6,17 @@ def power():
     power_status = input("Enter your changes: ")
     if(power_status == "0"):
         power_status = "Off"
+    elif(power_status == "off"):
+        power_status = "Off"
+    elif(power_status == "Off"):
+        power_status = "Off"
     elif(power_status == "1"):
         power_status = "On"
     elif(power_status == "on"):
         power_status = "On"
-    elif(power_status == "off"):
-        power_status = "Off"
     elif(power_status == "On"):
         power_status = "On"
-    elif(power_status == "Off"):
-        power_status = "Off"
+    
     else:
         print("Wrong input.")
         power()
@@ -34,7 +35,6 @@ def power_check():
     return True
 
 def swing():
-    global power_status
     global swing_status
     status = power_check()
     if(not status):
@@ -44,16 +44,16 @@ def swing():
     swing_status = input("Enter your changes: ")
     if(swing_status == "0"):
         swing_status = "Off"
+    elif(swing_status == "off"):
+        swing_status = "Off"
+    elif(swing_status == "Off"):
+        swing_status = "Off"
     elif(swing_status == "1"):
         swing_status = "On"
     elif(swing_status == "on"):
         swing_status = "On"
-    elif(swing_status == "off"):
-        swing_status = "Off"
     elif(swing_status == "On"):
         swing_status = "On"
-    elif(swing_status == "Off"):
-        swing_status = "Off"
     else:
         print("Wrong input.")
         swing()
@@ -76,11 +76,27 @@ def sleep():
 def timer():
 	global power_status
 
-def set_temperature_up():
-    global power_status
+def set_temperature():
+    global temperature_status
+    status = power_check()
+    if(not status):
+        return False
     
-def set_temperature_down():
-    global power_status
+    print(f"Current temperature: {temperature_status}")
+    temp_temperature_status = input("Enter your changes: ")
+    try:
+        temp_temperature_status = int(temp_temperature_status)
+    except ValueError:
+        if(temp_temperature_status == "up"):
+            temp_temperature_status = temperature_status+1
+        elif(temp_temperature_status == "down"):
+            temp_temperature_status = temperature_status-1
+        else:
+            print("Wrong input.")
+            set_temperature()
+            return False
+
+    temperature_status = temp_temperature_status
 
 def auto():
 	global power_status
@@ -143,7 +159,7 @@ def ask():
         case "timer":
             pass
         case "temperature":
-            pass
+            set_temperature()
         case "auto":
             pass
         case "exit":
