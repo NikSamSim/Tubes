@@ -1,34 +1,92 @@
 #functions
+def power():
+    global power_status
+    global power_warning
+    print(f"Current power status: {power_status}")
+    power_status = input("Enter your changes: ")
+    if(power_status == "0"):
+        power_status = "Off"
+    elif(power_status == "1"):
+        power_status = "On"
+    elif(power_status == "on"):
+        power_status = "On"
+    elif(power_status == "off"):
+        power_status = "Off"
+    elif(power_status == "On"):
+        power_status = "On"
+    elif(power_status == "Off"):
+        power_status = "Off"
+    else:
+        print("Wrong input.")
+        power()
+    
+    if(power_status == "On"):
+        power_warning = ""
+    
+def power_check():
+    global power_warning
+    if(power_status == "Off"):
+        print(f"Your power is off, cannot continue command.")
+        power_warning = "<- This needs to be on."
+        return False
+    
+    power_warning = ""
+    return True
+
 def swing():
-	pass
+    global power_status
+    global swing_status
+    status = power_check()
+    if(not status):
+        return False
+    
+    print(f"Current swing status: {swing_status}")
+    swing_status = input("Enter your changes: ")
+    if(swing_status == "0"):
+        swing_status = "Off"
+    elif(swing_status == "1"):
+        swing_status = "On"
+    elif(swing_status == "on"):
+        swing_status = "On"
+    elif(swing_status == "off"):
+        swing_status = "Off"
+    elif(swing_status == "On"):
+        swing_status = "On"
+    elif(swing_status == "Off"):
+        swing_status = "Off"
+    else:
+        print("Wrong input.")
+        swing()
 
 def fan():
-	pass
+    global power_status
 
 def mode():
-	pass
+	global power_status
 
 def turbo():
-	pass
+	global power_status
 
 def quiet():
-	pass
+	global power_status
 
 def sleep():
-	pass
+	global power_status
 
 def timer():
-	pass
+	global power_status
 
 def set_temperature_up():
-    pass
+    global power_status
+    
 def set_temperature_down():
-    pass
+    global power_status
 
 def auto():
-	pass
+	global power_status
 
 def display():
+    global power_status
     global swing_status
     global fan_status
     global mode_status
@@ -38,8 +96,11 @@ def display():
     global timer_status
     global temperature_status
     global auto_status
+    
+    global warning_power
 
     print(f"{' STATUS ':=^30}")
+    print(f"{"Power":<15}: {power_status:<10} {power_warning}")
     print(f"{"Swing":<15}: {swing_status}")
     print(f"{"Fan":<15}: {fan_status}")
     print(f"{"Mode":<15}: {mode_status}")
@@ -52,6 +113,7 @@ def display():
     print(f"{"":=<30}")
     
 def ask():
+    global power_status
     global swing_status
     global fan_status
     global mode_status
@@ -65,9 +127,9 @@ def ask():
     command = input("What do you want to change? ")
     match command:
         case "power":
-            pass
+            power()
         case "swing":
-            pass
+            swing()
         case "fan":
             pass
         case "mode":
@@ -98,6 +160,7 @@ timer_status = "Off"
 temperature_status = 23
 auto_status = "Off"
 
+power_warning = ""
 
 while(True):
     display()
