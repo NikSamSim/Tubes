@@ -1,30 +1,39 @@
 #functions
 def power():
+    """
+    This function changes power to on/off based on user's command
+    """
     global power_status
     global power_warning
     print(f"Current power status: {power_status}")
-    power_status = input("Enter your changes: ")
-    if(power_status == "0"):
-        power_status = "Off"
-    elif(power_status == "off"):
-        power_status = "Off"
-    elif(power_status == "Off"):
-        power_status = "Off"
-    elif(power_status == "1"):
-        power_status = "On"
-    elif(power_status == "on"):
-        power_status = "On"
-    elif(power_status == "On"):
-        power_status = "On"
+    temp_power_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
+    if(temp_power_status == "0"):
+        temp_power_status = "Off"
+    elif(temp_power_status == "off"):
+        temp_power_status = "Off"
+    elif(temp_power_status == "Off"):
+        temp_power_status = "Off"
+    elif(temp_power_status == "1"):
+        temp_power_status = "On"
+    elif(temp_power_status == "on"):
+        temp_power_status = "On"
+    elif(temp_power_status == "On"):
+        temp_power_status = "On"
     
     else:
         print("Wrong input.")
         power()
     
+    power_status = temp_power_status
+    
     if(power_status == "On"):
         power_warning = ""
     
 def power_check():
+    """
+    This function checks whether the power is on or off when the user tries to execute other functions.
+    If power is off, the process will terminate and asks the user to turn on the power.
+    """
     global power_warning
     if(power_status == "Off"):
         print(f"Your power is off, cannot continue command.")
@@ -35,31 +44,43 @@ def power_check():
     return True
 
 def swing():
+    """
+    This function changes swing to on/off based on user's command
+    """
     global swing_status
+    
+    # checks power status
     status = power_check()
     if(not status):
         return False
     
     print(f"Current swing status: {swing_status}")
-    swing_status = input("Enter your changes: ")
-    if(swing_status == "0"):
-        swing_status = "Off"
-    elif(swing_status == "off"):
-        swing_status = "Off"
-    elif(swing_status == "Off"):
-        swing_status = "Off"
-    elif(swing_status == "1"):
-        swing_status = "On"
-    elif(swing_status == "on"):
-        swing_status = "On"
-    elif(swing_status == "On"):
-        swing_status = "On"
+    temp_swing_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
+    if(temp_swing_status == "0"):
+        temp_swing_status = "Off"
+    elif(temp_swing_status == "off"):
+        temp_swing_status = "Off"
+    elif(temp_swing_status == "Off"):
+        temp_swing_status = "Off"
+    elif(temp_swing_status == "1"):
+        temp_swing_status = "On"
+    elif(temp_swing_status == "on"):
+        temp_swing_status = "On"
+    elif(temp_swing_status == "On"):
+        temp_swing_status = "On"
     else:
         print("Wrong input.")
         swing()
+        
+    swing_status = temp_swing_status
 
 def fan():
+    """
+    This function changes fan speed to low/medium/high based on user's command
+    """
     global fan_status
+    
+    # checks power status
     status = power_check()
     if(not status):
         return False
@@ -67,7 +88,7 @@ def fan():
     options = ["Low", "Medium", "High"]
     print(f"Current fan status  : {fan_status}")
     print(f"What you can choose : Low Medium High")
-    temp_fan_status = input("Enter your changes: ")
+    temp_fan_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
     try:
         temp_fan_status = int(temp_fan_status)
     except ValueError:
@@ -117,7 +138,7 @@ def set_temperature():
         return False
     
     print(f"Current temperature: {temperature_status}")
-    temp_temperature_status = input("Enter your changes: ")
+    temp_temperature_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
     try:
         temp_temperature_status = int(temp_temperature_status)
     except ValueError:
