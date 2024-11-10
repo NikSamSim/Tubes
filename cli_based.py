@@ -116,8 +116,10 @@ def fan():
     
     fan_status = temp_fan_status
 
-# TODO completely define this function
 def mode():
+    """
+    This function changes mode to the listed options based on user's input
+    """
     global mode_status
     
     status = power_check()
@@ -167,17 +169,15 @@ def mode():
     
     mode_status = temp_mode_status
 
-def turbo():
-	global power_status
-
-def quiet():
-	global power_status
-
-def sleep():
-	global power_status
-
+# TODO define this function
 def timer():
-	global power_status
+    global power_status
+    
+    status = power_check()
+    if(not status):
+        return False
+    
+    
 
 def set_temperature():
     global temperature_status
@@ -201,20 +201,13 @@ def set_temperature():
 
     temperature_status = temp_temperature_status
 
-def auto():
-	global power_status
-
 def display():
     global power_status
     global swing_status
     global fan_status
     global mode_status
-    global turbo_status
-    global quiet_status
-    global sleep_status
     global timer_status
     global temperature_status
-    global auto_status
     
     global warning_power
 
@@ -223,12 +216,8 @@ def display():
     print(f"{"Swing":<15}: {swing_status}")
     print(f"{"Fan":<15}: {fan_status}")
     print(f"{"Mode":<15}: {mode_status}")
-    print(f"{"Turbo":<15}: {turbo_status}")
-    print(f"{"Quiet":<15}: {quiet_status}")
-    print(f"{"Sleep":<15}: {sleep_status}")
     print(f"{"Timer":<15}: {timer_status}")
     print(f"{"Temperature":<15}: {temperature_status}")
-    print(f"{"Auto":<15}: {auto_status}")
     print(f"{"":=<30}")
     
 def ask():
@@ -236,12 +225,8 @@ def ask():
     global swing_status
     global fan_status
     global mode_status
-    global turbo_status
-    global quiet_status
-    global sleep_status
     global timer_status
     global temperature_status
-    global auto_status
     
     command = input("What do you want to change? ")
     match command:
@@ -253,33 +238,21 @@ def ask():
             fan()
         case "mode":
             mode()
-        case "turbo":
-            pass
-        case "quiet":
-            pass
-        case "sleep":
-            pass
         case "timer":
             pass
         case "temperature":
             set_temperature()
-        case "auto":
-            pass
         case "exit":
             return False
-        case _:
-            return True
+    
+    return True
 
 power_status = "Off"
 swing_status = "Off"
 fan_status = "Low"
 mode_status = "Normal"
-turbo_status = "Off"
-quiet_status = "Off"
-sleep_status = "Off"
 timer_status = "Off"
 temperature_status = 23
-auto_status = "Off"
 
 power_warning = ""
 
