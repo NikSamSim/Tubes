@@ -116,7 +116,7 @@ def fan():
     
     fan_status = temp_fan_status
 
-# TODO completely define this functoin
+# TODO completely define this functions
 def mode():
     global mode_status
     
