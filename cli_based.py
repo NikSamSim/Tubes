@@ -116,8 +116,21 @@ def fan():
     
     fan_status = temp_fan_status
 
+# TODO completely define this functoin
 def mode():
-	global power_status
+    global mode_status
+    
+    status = power_check()
+    if(not status):
+        return False
+
+    options = []
+    print(f"Current mode status: {mode_status}")
+    print(f"What you can choose: ", end="")
+    for op in options:
+        print(f"{op} ", end="")
+    print()
+    temp_mode_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
 
 def turbo():
 	global power_status
@@ -204,7 +217,7 @@ def ask():
         case "fan":
             fan()
         case "mode":
-            pass
+            mode()
         case "turbo":
             pass
         case "quiet":
