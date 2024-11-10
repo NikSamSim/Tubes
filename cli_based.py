@@ -116,7 +116,7 @@ def fan():
     
     fan_status = temp_fan_status
 
-# TODO completely define this functions
+# TODO completely define this function
 def mode():
     global mode_status
     
@@ -124,13 +124,39 @@ def mode():
     if(not status):
         return False
 
-    options = []
+    options = ["Cool", "Dry", "Fan"]
     print(f"Current mode status: {mode_status}")
     print(f"What you can choose: ", end="")
     for op in options:
         print(f"{op} ", end="")
     print()
     temp_mode_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
+
+    try:
+        temp_mode_status = int(temp_mode_status)
+    except ValueError:
+        if(temp_mode_status == "cool"):
+            temp_mode_status = options[0]
+        elif(temp_mode_status == "dry"):
+            temp_mode_status = options[1]
+        elif(temp_mode_status == "fan"):
+            temp_mode_status = options[2]
+        else:
+            print("Wrong input.")
+            fan()
+            return False
+    else:
+        if(temp_mode_status >=0 and temp_mode_status <= len(options)):
+            if(temp_mode_status == 0):
+                temp_mode_status = options[0]
+            else:
+                temp_mode_status = options[temp_mode_status-1]
+        else:
+            print("Wrong input.")
+            fan()
+            return False
+    
+    mode_status = temp_mode_status
 
 def turbo():
 	global power_status
