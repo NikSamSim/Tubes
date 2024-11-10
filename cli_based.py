@@ -124,14 +124,15 @@ def mode():
     if(not status):
         return False
 
-    options = ["Cool", "Dry", "Fan"]
+    options = ["Cool", "Dry", "Fan", "Turbo", "Quiet", "Sleep", "Auto"]
     print(f"Current mode status: {mode_status}")
     print(f"What you can choose: ", end="")
     for op in options:
         print(f"{op} ", end="")
     print()
-    temp_mode_status = input("Enter your changes: ") # using temp variable to avoid accessing the main variable directly
-
+    # using temp variable to avoid accessing the main variable directly
+    temp_mode_status = input("Enter your changes: ").lower() 
+    
     try:
         temp_mode_status = int(temp_mode_status)
     except ValueError:
@@ -141,6 +142,14 @@ def mode():
             temp_mode_status = options[1]
         elif(temp_mode_status == "fan"):
             temp_mode_status = options[2]
+        elif(temp_mode_status == "turbo"):
+            temp_mode_status = options[3]
+        elif(temp_mode_status == "quiet"):
+            temp_mode_status = options[4]
+        elif(temp_mode_status == "sleep"):
+            temp_mode_status = options[5]
+        elif(temp_mode_status == "auto"):
+            temp_mode_status = options[6]
         else:
             print("Wrong input.")
             fan()
@@ -257,7 +266,9 @@ def ask():
         case "auto":
             pass
         case "exit":
-            pass
+            return False
+        case _:
+            return True
 
 power_status = "Off"
 swing_status = "Off"
@@ -274,4 +285,7 @@ power_warning = ""
 
 while(True):
     display()
-    ask()
+    status = ask()
+    if(not status):
+        print(f"Program terminated.")
+        break
