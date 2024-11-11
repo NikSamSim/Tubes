@@ -154,7 +154,7 @@ def mode():
             temp_mode_status = options[6]
         else:
             print("Wrong input.")
-            fan()
+            mode()
             return False
     else:
         if(temp_mode_status >=0 and temp_mode_status <= len(options)):
@@ -164,7 +164,7 @@ def mode():
                 temp_mode_status = options[temp_mode_status-1]
         else:
             print("Wrong input.")
-            fan()
+            mode()
             return False
     
     mode_status = temp_mode_status
