@@ -1,3 +1,5 @@
+import time
+
 #functions
 def power():
     """
@@ -169,16 +171,26 @@ def mode():
     
     mode_status = temp_mode_status
 
-# TODO define this function
 def timer():
-    global power_status
-    
+    # This function sets a timer to automatically turn off
+    # the power after a specified duration in minutes.
+    global power_status, timer_status
     status = power_check()
-    if(not status):
+    if (not status):
         return False
+        
+    print(f"Current timer status: {timer_status}")
+    duration_minutes = int(input("Enter timer duration in minutes: "))
+    timer_status = f"{duration_minutes} min"
+    print(f"Timer set for {duration_minutes} minutes.")
+    # Wait for the specified duration
+    time.sleep(duration_minutes * 60) # Converts minutes to seconds
+    # After time is up, turn off power and reset timer
+    power_status = "Off"
+    timer_status = "Off"
+    print("Timer ended. Power has been turned off automatically.")
+    return True
     
-    
-
 def set_temperature():
     global temperature_status
     status = power_check()
@@ -239,7 +251,7 @@ def ask():
         case "mode":
             mode()
         case "timer":
-            pass
+            timer() 
         case "temperature":
             set_temperature()
         case "exit":
